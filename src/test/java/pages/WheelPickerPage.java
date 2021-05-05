@@ -4,7 +4,6 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -17,14 +16,16 @@ public class WheelPickerPage extends BasePage{
     MobileElement longPress;
     @AndroidFindBy(xpath = "//*[@class='android.widget.Spinner']")
     MobileElement spinner;
+    @AndroidFindBy(xpath = "//*[@class='android.widget.TextView']")
+    List<MobileElement> textViews;
 
-    public WheelPickerPage(AppiumDriver driver) {
+    public WheelPickerPage(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
 
     @Override
     public WheelPickerPage openPage(String title){
-        wait.until(ExpectedConditions.visibilityOf(longPress));
+        waitForElementToAppear(longPress);
         startY = driver.manage().window().getSize().getHeight()*99/100;
         touchAction
                 .longPress(point(0, startY))
@@ -36,13 +37,12 @@ public class WheelPickerPage extends BasePage{
     }
 
     public WheelPickerPage isPageOpened(){
-        wait.until(ExpectedConditions.visibilityOf(spinner));
+        waitForElementToAppear(spinner);
         return this;
     }
 
     public WheelPickerPage verifySelectedColor(String color){
         String message = " Current Color: %s ";
-        List<MobileElement> textViews = driver.findElements(By.xpath("//*[@class='android.widget.TextView']"));
         assertEquals(textViews.get(0).getText(), String.format(message, color), "Invalid message");
         return this;
     }

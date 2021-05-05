@@ -16,7 +16,7 @@ public class DragDropPage extends BasePage{
     @AndroidFindBy(accessibility = "success")
     MobileElement successMessage;
 
-    public DragDropPage(AppiumDriver driver) {
+    public DragDropPage(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
 

@@ -4,7 +4,6 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -14,8 +13,10 @@ public class VerticalSwipingPage extends BasePage{
 
     @AndroidFindBy(accessibility = "listview")
     MobileElement listview;
+    @AndroidFindBy(xpath = "//*[@class='android.view.ViewGroup']")
+    List<MobileElement> textBoxes;
 
-    public VerticalSwipingPage(AppiumDriver driver) {
+    public VerticalSwipingPage(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
 
@@ -26,7 +27,7 @@ public class VerticalSwipingPage extends BasePage{
     }
 
     public VerticalSwipingPage isPageOpened(){
-        wait.until(ExpectedConditions.visibilityOf(listview));
+        waitForElementToAppear(listview);
         return this;
     }
 
@@ -43,7 +44,7 @@ public class VerticalSwipingPage extends BasePage{
     }
 
     public VerticalSwipingPage getTextBoxes(){
-        List<MobileElement> textBoxes = driver.findElements(By.xpath("//*[@class='android.view.ViewGroup']"));
+        //List<MobileElement> textBoxes = driver.findElements(By.xpath("//*[@class='android.view.ViewGroup']"));
         System.out.println(textBoxes.get(5).findElement(By.xpath("//*[@class='android.widget.TextView']")).getText());
         System.out.println(textBoxes.get(6).findElement(By.xpath("//*[@class='android.widget.TextView']")).getText());
         System.out.println(textBoxes.get(7).findElement(By.xpath("//*[@class='android.widget.TextView']")).getText());

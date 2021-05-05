@@ -9,7 +9,7 @@ public class AppiumServer {
         final String url = "127.0.0.1";
         //final String appiumJsRunner = PropertyManager.getInstance().get("appium.server.js.path");
         //final String pathName = PropertyManager.getInstance().get("path.name");
-        final int appiumServerPort = 4728;
+        final int appiumServerPort = 4729;
 
         AppiumDriverLocalService service = AppiumDriverLocalService.buildService(
                 new AppiumServiceBuilder()
@@ -18,7 +18,9 @@ public class AppiumServer {
                         //.withAppiumJS(new File(appiumJsRunner))
                         //.usingDriverExecutable(new File(pathName))
                         .withArgument(GeneralServerFlag.SESSION_OVERRIDE)
-                        .withArgument(GeneralServerFlag.LOG_LEVEL, "error"));
+                        .withArgument(GeneralServerFlag.LOG_LEVEL, "error")
+                        .withArgument(GeneralServerFlag.ALLOW_INSECURE)
+                        .withArgument(() -> "chromedriver_autodownload"));
         service.start();
         return service;
     }

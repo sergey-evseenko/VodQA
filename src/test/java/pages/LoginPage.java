@@ -1,11 +1,19 @@
 package pages;
 
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.By;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class LoginPage extends BasePage{
 
-    public LoginPage(AppiumDriver driver) {
+    @AndroidFindBy(id = "com.android.permissioncontroller:id/continue_button")
+    MobileElement continueButton;
+    @AndroidFindBy(id = "android:id/button1")
+    MobileElement okButton;
+    @AndroidFindBy(xpath = "//*[@text='LOG IN']")
+    MobileElement loginButton;
+
+    public LoginPage(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
 
@@ -15,8 +23,8 @@ public class LoginPage extends BasePage{
     }
 
     public void login(){
-        driver.findElement(By.id("com.android.permissioncontroller:id/continue_button")).click();
-        driver.findElement(By.id("android:id/button1")).click();
-        driver.findElement(By.xpath("//*[@text='LOG IN']")).click();
+        continueButton.click();
+        okButton.click();
+        loginButton.click();
     }
 }

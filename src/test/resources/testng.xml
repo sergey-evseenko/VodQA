@@ -1,10 +1,19 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name = "signup_suite">
-    <parameter name = "platformName" value="android"/>
-    <test name = "guest_signup">
-        <package>
-            <class name = "com.test.android" />
-        </package>
+    <!--
+    <parameter name = "platform" value="android"/>
+    <test name = "test1">
+        <classes>
+            <class name = "test.VodQaTest" />
+        </classes>
     </test>
+    -->
+    <parameter name = "platform" value="ios"/>
+    <test name = "test2">
+        <classes>
+            <class name = "test.VodQaTest" />
+        </classes>
+    </test>
+
 </suite>

@@ -3,7 +3,6 @@ package pages;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static io.appium.java_client.touch.offset.PointOption.point;
 
@@ -13,7 +12,7 @@ public class SliderPage extends BasePage{
     MobileElement slider;
 
 
-    public SliderPage(AppiumDriver driver) {
+    public SliderPage(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
 
@@ -24,7 +23,7 @@ public class SliderPage extends BasePage{
     }
 
     public SliderPage isPageOpened(){
-        wait.until(ExpectedConditions.visibilityOf(slider));
+        waitForElementToAppear(slider);
         return this;
     }
 

@@ -12,7 +12,7 @@ public class WebViewPage extends BasePage{
     @AndroidFindBy(xpath = "//*[@text='login']")
     MobileElement loginButton;
 
-    public WebViewPage(AppiumDriver driver) {
+    public WebViewPage(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
 
@@ -35,8 +35,8 @@ public class WebViewPage extends BasePage{
         //TODO: ругается на "No Chromedriver found"
         driver.context((String) contextNames.toArray()[1]); // set context to WEBVIEW_1
         //do some web testing
-        driver.findElement(By.xpath("(//input[@name=\"pw\"])[1]")).sendKeys("sergey.evseenko@gmail.com");
-        driver.findElement(By.xpath("(//input[@name=\"acct\"])[1]")).sendKeys("Testpass1");
+        driver.findElement(By.xpath("(//input[@name=\"acct\"])[1]")).sendKeys("sergey.evseenko@gmail.com");
+        driver.findElement(By.xpath("(//input[@name=\"pw\"])[1]")).sendKeys("Testpass1");
         driver.context("NATIVE_APP");
     }
 }

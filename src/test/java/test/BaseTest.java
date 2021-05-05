@@ -1,11 +1,18 @@
 package test;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
+import net.bytebuddy.implementation.bind.annotation.Default;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import pages.*;
+import utils.AndroidDriverManager;
+import utils.DriverManager;
+import utils.IOSDriverManager;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,23 +30,23 @@ public class BaseTest {
     CarouselPage carouselPage;
     WheelPickerPage wheelPickerPage;
     WebViewPage webViewPage;
+    DriverManager driverManager;
 
-    private AppiumDriver driver;
+    private AppiumDriver<MobileElement> driver;
 
     @BeforeClass
-    public void setDriver(){
-        //set up capabilities
-        caps = new DesiredCapabilities();
-        caps.setCapability("deviceName", "Pixel_3a_API_30");
-        caps.setCapability("avd", "Pixel_3a_API_30");
-        caps.setCapability("platformName", "Android");
-        caps.setCapability("appPackage", "com.vodqareactnative");
-        caps.setCapability("appActivity", "com.vodqareactnative.MainActivity");
+    @Parameters("platform")
+    public void setDriver(@Optional("android") String platform){
         //run test.AppiumServer
         service = AppiumServer.startServer();
         //set up Appium Driver
-        driver = new AppiumDriver(service, caps);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        if (platform.equals("android")){
+            driverManager = new AndroidDriverManager();
+        }else {
+            driverManager = new IOSDriverManager();
+        }
+
+        driver = driverManager.getDriver(service);
 
         loginPage = new LoginPage(driver);
         menuPage = new MenuPage(driver);

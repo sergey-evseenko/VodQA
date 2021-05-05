@@ -16,7 +16,7 @@ public class LongPressPage extends BasePage{
     @AndroidFindBy(id = "android:id/button1")
     MobileElement okButton;
 
-    public LongPressPage(AppiumDriver driver) {
+    public LongPressPage(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
 

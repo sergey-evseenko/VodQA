@@ -17,7 +17,7 @@ public class DoubleTabPage extends BasePage{
     @AndroidFindBy(id = "android:id/button1")
     MobileElement okButton;
 
-    public DoubleTabPage(AppiumDriver driver) {
+    public DoubleTabPage(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
 

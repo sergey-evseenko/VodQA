@@ -10,7 +10,7 @@ public class MenuPage extends BasePage{
     @AndroidFindBy(xpath = "//*[@text='Back']")
     MobileElement backButton;
 
-    public MenuPage(AppiumDriver driver) {
+    public MenuPage(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
 
