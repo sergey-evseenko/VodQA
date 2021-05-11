@@ -4,6 +4,7 @@ package pages;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 
 import java.util.List;
 
@@ -11,7 +12,11 @@ import static org.testng.Assert.assertEquals;
 
 public class NativeViewPage extends BasePage{
 
-    @AndroidFindBy(xpath = "(//*[@content-desc='textView'])")
+    @AndroidFindBy(xpath = "//*[@content-desc='chainedView']")
+    @iOSXCUITFindBy(xpath = "//*[@name='chainedView']")
+    MobileElement chainedView;
+    @AndroidFindBy(xpath = "//*[@content-desc='textView']")
+    @iOSXCUITFindBy(xpath = "//*[@name='textView']")
     List<MobileElement> textBoxes;
 
     public NativeViewPage(AppiumDriver<MobileElement> driver) {
@@ -19,8 +24,8 @@ public class NativeViewPage extends BasePage{
     }
 
     @Override
-    public NativeViewPage openPage(String title){
-        clickMenu(title);
+    public NativeViewPage openPage(){
+        chainedView.click();
         return this;
     }
 

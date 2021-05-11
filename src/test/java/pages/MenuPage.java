@@ -3,11 +3,12 @@ package pages;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.openqa.selenium.By;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 
 public class MenuPage extends BasePage{
 
     @AndroidFindBy(xpath = "//*[@text='Back']")
+    @iOSXCUITFindBy(xpath = "//*[@name='Back']")
     MobileElement backButton;
 
     public MenuPage(AppiumDriver<MobileElement> driver) {
@@ -15,7 +16,7 @@ public class MenuPage extends BasePage{
     }
 
     @Override
-    protected BasePage openPage(String title) {
+    protected BasePage openPage() {
         return null;
     }
 

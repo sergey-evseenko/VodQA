@@ -3,12 +3,16 @@ package pages;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.appium.java_client.touch.offset.ElementOption;
 
 import static org.testng.Assert.assertEquals;
 
 public class LongPressPage extends BasePage{
 
+    @AndroidFindBy(xpath = "//*[@content-desc='longPress']")
+    @iOSXCUITFindBy(xpath = "//*[@name='longPress']")
+    MobileElement longPress;
     @AndroidFindBy(accessibility = "longpress")
     MobileElement longPressButton;
     @AndroidFindBy(id = "android:id/message")
@@ -21,10 +25,11 @@ public class LongPressPage extends BasePage{
     }
 
     @Override
-    public LongPressPage openPage(String title){
-        clickMenu(title);
+    public LongPressPage openPage(){
+        longPress.click();
         return this;
     }
+
     public LongPressPage longPress(){
         touchAction.longPress(ElementOption.element(longPressButton)).release().perform();
         return this;

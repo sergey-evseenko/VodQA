@@ -3,6 +3,7 @@ package pages;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.By;
 
 import java.util.List;
@@ -11,7 +12,11 @@ import static io.appium.java_client.touch.offset.PointOption.point;
 
 public class VerticalSwipingPage extends BasePage{
 
+    @AndroidFindBy(xpath = "//*[@content-desc='verticalSwipe']")
+    @iOSXCUITFindBy(xpath = "//*[@name='verticalSwipe']")
+    MobileElement verticalSwipe;
     @AndroidFindBy(accessibility = "listview")
+    @iOSXCUITFindBy(xpath = "//*[@name='listview']")
     MobileElement listview;
     @AndroidFindBy(xpath = "//*[@class='android.view.ViewGroup']")
     List<MobileElement> textBoxes;
@@ -21,17 +26,12 @@ public class VerticalSwipingPage extends BasePage{
     }
 
     @Override
-    public VerticalSwipingPage openPage(String title){
-        clickMenu(title);
+    public VerticalSwipingPage openPage(){
+        verticalSwipe.click();
         return this;
     }
-
-    public VerticalSwipingPage isPageOpened(){
-        waitForElementToAppear(listview);
-        return this;
-    }
-
     public VerticalSwipingPage swipeDown(){
+        waitForElementToAppear(listview);
         startY = driver.manage().window().getSize().getHeight()*99/100;
 
         touchAction

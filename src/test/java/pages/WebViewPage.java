@@ -3,12 +3,16 @@ package pages;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.By;
 
 import java.util.Set;
 
 public class WebViewPage extends BasePage{
 
+    @AndroidFindBy(xpath = "//*[@content-desc='webView']")
+    @iOSXCUITFindBy(xpath = "//*[@name='webView']")
+    MobileElement webView;
     @AndroidFindBy(xpath = "//*[@text='login']")
     MobileElement loginButton;
 
@@ -17,8 +21,8 @@ public class WebViewPage extends BasePage{
     }
 
     @Override
-    public WebViewPage openPage(String title){
-        clickMenu(title);
+    public WebViewPage openPage(){
+        webView.click();
         return this;
     }
 
@@ -32,7 +36,6 @@ public class WebViewPage extends BasePage{
         for (String contextName : contextNames) {
             System.out.println(contextName); //prints out something like NATIVE_APP \n WEBVIEW_1
         }
-        //TODO: ругается на "No Chromedriver found"
         driver.context((String) contextNames.toArray()[1]); // set context to WEBVIEW_1
         //do some web testing
         driver.findElement(By.xpath("(//input[@name=\"acct\"])[1]")).sendKeys("sergey.evseenko@gmail.com");

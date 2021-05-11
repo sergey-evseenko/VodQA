@@ -5,9 +5,10 @@ import org.testng.annotations.*;
 
 public class VodQaTest extends BaseTest{
 
+    @Parameters("platform")
     @BeforeClass
-    public void openApp(){
-        loginPage.login();
+    public void openApp(@Optional("ios") String platform){
+        loginPage.login(platform);
     }
 
     @AfterMethod
@@ -18,23 +19,21 @@ public class VodQaTest extends BaseTest{
     @Test(description = "Native View")
     public void nativeView() {
         nativeViewPage
-                .openPage("Native View")
+                .openPage()
                 .checkContent();
     }
 
     @Test(description = "Slider")
     public void slider() {
         sliderPage
-                .openPage("Slider")
-                .isPageOpened()
+                .openPage()
                 .moveSlider();
     }
 
     @Test(description = "Vertical swiping")
     public void verticalSwiping() {
         verticalSwipingPage
-                .openPage("Vertical swiping")
-                .isPageOpened()
+                .openPage()
                 .swipeDown()
                 .getTextBoxes();
     }
@@ -42,7 +41,7 @@ public class VodQaTest extends BaseTest{
     @Test(description = "Drag&Drop")
     public void dragDrop(){
         dragDropPage
-                .openPage("Drag & Drop")
+                .openPage()
                 .dragDrop()
                 .verifySuccessMessage("Circle dropped");
     }
@@ -50,7 +49,7 @@ public class VodQaTest extends BaseTest{
     @Test(description = "Double tab")
     public void doubleTab() {
         doubleTabPage
-                .openPage("Double Tap")
+                .openPage()
                 .doubleTab()
                 .verifySuccessMessage("Double tap successful!")
                 .clickOk();
@@ -59,7 +58,7 @@ public class VodQaTest extends BaseTest{
     @Test(description = "Long Press")
     public void longPress(){
         longPressPage
-                .openPage("Long Press")
+                .openPage()
                 .longPress()
                 .verifySuccessMessage("you pressed me hard :P")
                 .clickOk();
@@ -68,7 +67,7 @@ public class VodQaTest extends BaseTest{
     @Test(description = "Web View")
     public void webView(){
         webViewPage
-                .openPage("Web View")
+                .openPage()
                 .clickLogin()
                 .provideLoginPass();
     }
@@ -76,7 +75,7 @@ public class VodQaTest extends BaseTest{
     @Test(description = "Carousel")
     public void zCarousel(){
         carouselPage
-                .openPage("Carousel")
+                .openPage()
                 .scrollRight()
                 .scrollLeft();
     }
@@ -84,8 +83,7 @@ public class VodQaTest extends BaseTest{
     @Test(description = "wheel picker")
     public void zWheelPicker(){
         wheelPickerPage
-                .openPage("Wheel Picker")
-                .isPageOpened()
+                .openPage()
                 .verifySelectedColor("red")
                 .selectColor("black")
                 .verifySelectedColor("black");

@@ -3,8 +3,6 @@ package test;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
-import net.bytebuddy.implementation.bind.annotation.Default;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
@@ -14,10 +12,8 @@ import utils.AndroidDriverManager;
 import utils.DriverManager;
 import utils.IOSDriverManager;
 
-import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
-    DesiredCapabilities caps;
     AppiumDriverLocalService service;
     LoginPage loginPage;
     MenuPage menuPage;
@@ -36,7 +32,7 @@ public class BaseTest {
 
     @BeforeClass
     @Parameters("platform")
-    public void setDriver(@Optional("android") String platform){
+    public void setDriver(@Optional("ios") String platform){
         //run test.AppiumServer
         service = AppiumServer.startServer();
         //set up Appium Driver

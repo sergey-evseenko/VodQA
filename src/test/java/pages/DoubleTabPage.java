@@ -3,6 +3,7 @@ package pages;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 
@@ -10,6 +11,9 @@ import static org.testng.Assert.assertEquals;
 
 public class DoubleTabPage extends BasePage{
 
+    @AndroidFindBy(xpath = "//*[@content-desc='doubleTap']")
+    @iOSXCUITFindBy(xpath = "//*[@name='doubleTap']")
+    MobileElement doubleTap;
     @AndroidFindBy(accessibility = "doubleTapMe")
     MobileElement doubleTabButton;
     @AndroidFindBy(id = "android:id/message")
@@ -22,8 +26,8 @@ public class DoubleTabPage extends BasePage{
     }
 
     @Override
-    public DoubleTabPage openPage(String title){
-        clickMenu(title);
+    public DoubleTabPage openPage(){
+        doubleTap.click();
         return this;
     }
 

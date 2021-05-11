@@ -27,10 +27,5 @@ public abstract class BasePage {
             wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    protected abstract BasePage openPage(String title);
-
-    protected void clickMenu(String title){
-        String locator = "//*[@text='%s']";
-        driver.findElement(By.xpath(String.format(locator, title))).click();
-    }
+    protected abstract BasePage openPage();
 }
