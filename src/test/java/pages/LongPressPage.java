@@ -10,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 
 public class LongPressPage extends BasePage{
 
-    @AndroidFindBy(xpath = "//*[@content-desc='longPress']")
+    @AndroidFindBy(accessibility = "longPress")
     @iOSXCUITFindBy(xpath = "//*[@name='longPress']")
     MobileElement longPress;
     @AndroidFindBy(accessibility = "longpress")

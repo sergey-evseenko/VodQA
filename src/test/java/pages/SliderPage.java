@@ -9,7 +9,7 @@ import static io.appium.java_client.touch.offset.PointOption.point;
 
 public class SliderPage extends BasePage{
 
-    @AndroidFindBy(xpath = "//*[@content-desc='Slider']")
+    @AndroidFindBy(accessibility = "slider1")
     @iOSXCUITFindBy(xpath = "//*[@name='slider1']")
     MobileElement sliderMenu;
     @AndroidFindBy(accessibility = "slider")

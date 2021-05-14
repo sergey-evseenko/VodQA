@@ -9,7 +9,7 @@ import static io.appium.java_client.touch.offset.PointOption.point;
 
 public class CarouselPage extends BasePage{
 
-    @AndroidFindBy(xpath = "//*[@content-desc='carousel']")
+    @AndroidFindBy(accessibility = "carousel")
     @iOSXCUITFindBy(xpath = "//*[@name='carousel']")
     MobileElement carousel;
     @AndroidFindBy(xpath = "//*[@text='1']")

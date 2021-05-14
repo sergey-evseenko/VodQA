@@ -12,7 +12,7 @@ import static io.appium.java_client.touch.offset.PointOption.point;
 
 public class VerticalSwipingPage extends BasePage{
 
-    @AndroidFindBy(xpath = "//*[@content-desc='verticalSwipe']")
+    @AndroidFindBy(accessibility = "verticalSwipe")
     @iOSXCUITFindBy(xpath = "//*[@name='verticalSwipe']")
     MobileElement verticalSwipe;
     @AndroidFindBy(accessibility = "listview")

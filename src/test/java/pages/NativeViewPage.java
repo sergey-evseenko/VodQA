@@ -12,10 +12,10 @@ import static org.testng.Assert.assertEquals;
 
 public class NativeViewPage extends BasePage{
 
-    @AndroidFindBy(xpath = "//*[@content-desc='chainedView']")
+    @AndroidFindBy(accessibility = "chainedView")
     @iOSXCUITFindBy(xpath = "//*[@name='chainedView']")
     MobileElement chainedView;
-    @AndroidFindBy(xpath = "//*[@content-desc='textView']")
+    @AndroidFindBy(accessibility = "textView")
     @iOSXCUITFindBy(xpath = "//*[@name='textView']")
     List<MobileElement> textBoxes;
 

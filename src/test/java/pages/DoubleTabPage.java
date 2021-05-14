@@ -11,7 +11,7 @@ import static org.testng.Assert.assertEquals;
 
 public class DoubleTabPage extends BasePage{
 
-    @AndroidFindBy(xpath = "//*[@content-desc='doubleTap']")
+    @AndroidFindBy(accessibility = "doubleTap")
     @iOSXCUITFindBy(xpath = "//*[@name='doubleTap']")
     MobileElement doubleTap;
     @AndroidFindBy(accessibility = "doubleTapMe")
