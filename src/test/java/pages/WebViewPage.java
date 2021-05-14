@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class WebViewPage extends BasePage{
 
-    @AndroidFindBy(xpath = "//*[@content-desc='webView']")
+    @AndroidFindBy(accessibility = "webView")
     @iOSXCUITFindBy(xpath = "//*[@name='webView']")
     MobileElement webView;
     @AndroidFindBy(xpath = "//*[@text='login']")

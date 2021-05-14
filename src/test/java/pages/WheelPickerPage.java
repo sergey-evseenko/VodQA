@@ -13,7 +13,7 @@ import static org.testng.Assert.assertEquals;
 
 public class WheelPickerPage extends BasePage{
 
-    @AndroidFindBy(xpath = "//*[@content-desc='wheelPicker']")
+    @AndroidFindBy(accessibility = "wheelPicker")
     @iOSXCUITFindBy(xpath = "//*[@name='wheelPicker']")
     MobileElement wheelPicker;
     @AndroidFindBy(xpath = "//*[@class='android.widget.Spinner']")
